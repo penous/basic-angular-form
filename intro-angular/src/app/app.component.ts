@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FriendComponent } from './friend/friend.component';
+import { Friend } from './friend';
 
 @Component({
   selector: 'app-root',
@@ -14,5 +14,5 @@ export class AppComponent {
     return index;
   }
 
-  friend = new FriendComponent('', '', '', '', '');
+  friendModel = new Friend('', '', '', '', '');
 }

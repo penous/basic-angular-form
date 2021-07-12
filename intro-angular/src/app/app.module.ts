@@ -4,10 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FriendComponent } from './friend/friend.component';
 
 @NgModule({
-  declarations: [AppComponent, FriendComponent],
+  declarations: [AppComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
