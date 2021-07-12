@@ -1,0 +1,75 @@
+{{ friendModel | json }}
+<div class="container">
+  <form #formName="ngForm">
+    <div class="form-floating mb-3">
+      <input
+        #inputName="ngModel"
+        [(ngModel)]="friendModel.firstName"
+        class="form-control"
+        type="text"
+        name="firstName"
+        id="firstName"
+        placeholder="Firstname"
+      />
+      <label for="firstName">Firstname</label>
+    </div>
+
+    <div class="form-floating mb-3">
+      <input
+        #inputName="ngModel"
+        [(ngModel)]="friendModel.lastName"
+        class="form-control"
+        type="text"
+        name="lastName"
+        id="lastName"
+        placeholder="Lastname"
+      />
+      <label for="lastName">Lastname</label>
+    </div>
+
+    <div class="form-floating mb-3">
+      <input
+        #inputName="ngModel"
+        [(ngModel)]="friendModel.email"
+        class="form-control"
+        type="email"
+        name="email"
+        id="email"
+        placeholder="Email"
+      />
+      <label for="email">Email</label>
+    </div>
+
+    <div class="form-floating mb-3">
+      <input
+        #inputName="ngModel"
+        [(ngModel)]="friendModel.phoneNumber"
+        class="form-control"
+        type="tel"
+        name="phoneNumber"
+        id="phoneNumber"
+        placeholder="Phone number"
+      />
+      <label for="phoneNumber">Phonenumber</label>
+    </div>
+
+    <select
+      ngModel="{{ selected }}"
+      class="form-select"
+      name="language"
+      id="language"
+    >
+      <option selected disabled>{{ selected }}</option>
+      <option
+        *ngFor="let language of languages; trackBy: trackByIndex"
+        [value]="language"
+      >
+        {{ language }}
+      </option>
+    </select>
+
+    <button class="btn btn-primary mt-3">Submit</button>
+  </form>
+</div>
+
+<router-outlet></router-outlet>
