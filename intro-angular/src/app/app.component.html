@@ -3,34 +3,40 @@
   <form #formName="ngForm">
     <div class="form-floating mb-3">
       <input
-        #inputName="ngModel"
+        required
+        #firstName="ngModel"
         [(ngModel)]="friendModel.firstName"
+        [class.is-invalid]="firstName.invalid && firstName.touched"
         class="form-control"
         type="text"
         name="firstName"
         id="firstName"
         placeholder="Firstname"
       />
-      <label for="firstName">Firstname</label>
+      <label for="firstName">First Name</label>
     </div>
 
     <div class="form-floating mb-3">
       <input
-        #inputName="ngModel"
+        required
+        #lastName="ngModel"
         [(ngModel)]="friendModel.lastName"
+        [class.is-invalid]="lastName.invalid && lastName.touched"
         class="form-control"
         type="text"
         name="lastName"
         id="lastName"
         placeholder="Lastname"
       />
-      <label for="lastName">Lastname</label>
+      <label for="lastName">Last Name</label>
     </div>
 
     <div class="form-floating mb-3">
       <input
-        #inputName="ngModel"
+        required
+        #email="ngModel"
         [(ngModel)]="friendModel.email"
+        [class.is-invalid]="email.invalid && email.touched"
         class="form-control"
         type="email"
         name="email"
@@ -42,19 +48,25 @@
 
     <div class="form-floating mb-3">
       <input
-        #inputName="ngModel"
+        required
+        #phoneNumber="ngModel"
         [(ngModel)]="friendModel.phoneNumber"
+        [class.is-invalid]="phoneNumber.invalid && phoneNumber.touched"
         class="form-control"
         type="tel"
         name="phoneNumber"
         id="phoneNumber"
         placeholder="Phone number"
       />
-      <label for="phoneNumber">Phonenumber</label>
+      <label for="phoneNumber">Phone Number</label>
     </div>
 
     <select
+      required
+      #language="ngModel"
       ngModel="{{ selected }}"
+      [(ngModel)]="friendModel.language"
+      [class.is-invalid]="language.invalid && language.touched"
       class="form-select"
       name="language"
       id="language"
@@ -68,7 +80,14 @@
       </option>
     </select>
 
-    <button class="btn btn-primary mt-3">Submit</button>
+    <button
+      #button="ngModel"
+      [button.disable]="formName.form.invalid"
+      type="submit"
+      class="btn btn-primary mt-3"
+    >
+      Submit
+    </button>
   </form>
 </div>
 

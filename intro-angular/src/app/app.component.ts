@@ -10,9 +10,9 @@ export class AppComponent {
   languages = ['html', 'css', 'js', 'php', 'python', 'ruby'];
   selected = 'Choose your favorite languagee';
 
-  trackByIndex(index: number, obj: any) {
+  trackByIndex(index: number) {
     return index;
   }
 
-  friendModel = new Friend('', '', '', '', '');
+  friendModel = new Friend('', '', '', '', this.selected);
 }
