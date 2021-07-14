@@ -1,6 +1,6 @@
-{{ friendModel | json }}
+{{ allFriends | json }}
 <div class="container">
-  <form #formName="ngForm">
+  <form #formName="ngForm" novalidate (ngSubmit)="submitForm(friendModel)">
     <div class="form-floating mb-3">
       <input
         required
@@ -81,14 +81,29 @@
     </select>
 
     <button
-      #button="ngModel"
-      [button.disable]="formName.form.invalid"
+      [disabled]="formName.form.invalid"
       type="submit"
       class="btn btn-primary mt-3"
     >
       Submit
     </button>
   </form>
+
+  <div class="row">
+    <div *ngFor="let friend of allFriends" class="col">
+      <div class="card" style="width: 18rem">
+        <div class="card-body">
+          <h5 class="card-title">
+            {{ friend.firstName }} {{ friend.lastName }}
+          </h5>
+          <p class="card-text">
+            Email: {{ friend.email }} / Phone: {{ friend.phoneNumber }} /
+            Favorite language: {{ friend.language }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <router-outlet></router-outlet>
