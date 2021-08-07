@@ -14,7 +14,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): any {
     this.getFriends(this.addFriendService.url);
-    console.log(this.allFriends);
   }
 
   constructor(private addFriendService: AddFriendService) {}
