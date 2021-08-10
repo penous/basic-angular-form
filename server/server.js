@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -5,13 +6,10 @@ const app = express();
 
 const PORT = 9000;
 
-mongoose.connect(
-  'mongodb+srv://penous:penous@becode.v7mmb.mongodb.net/friendBook',
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  }
-);
+mongoose.connect(process.env.DB_HOST, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 const db = mongoose.connection;
 db.once('open', () => {
@@ -64,6 +62,7 @@ app.get('/allFriends', (request, response) => {
   Friend.find((err, friends) => {
     if (err) console.log(err);
     console.log(friends);
+    console.log(friends[0]['_id']);
     response.send(friends);
   });
 });
@@ -81,10 +80,10 @@ app.post('/addFriend', (request, response) => {
     phoneNumber: request.body.phoneNumber,
     language: request.body.language,
   });
-  friend.save((err, friend) => {
-    if (err) console.log(err);
-    console.log(friend);
-  });
+  // friend.save((err, friend) => {
+  //   if (err) console.log(err);
+  //   console.log(friend);
+  // });
 
   allFriends[allFriends.length] = request.body;
   response.status(200).send({ message: 'Friend added' });
